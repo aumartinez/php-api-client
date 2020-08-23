@@ -12,7 +12,12 @@ class Search extends Controller implements Handlers {
   }
   
   public function name ($name = null) {
-    $this->api_call($name);
+    $name = $_GET["search"];
+    
+    $token = $this->get_model("ApiModel")->sanitize_str($_GET["token"]);
+    
+    $res = $this->get_model("ApiModel")->api_call($name);
+    echo $res;
   }
     
   public function not_found() {
