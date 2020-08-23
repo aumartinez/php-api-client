@@ -1,0 +1,21 @@
+/* Global CSS */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+  padding: 0;
+}
+
+/* Spacers */
+
+.sec-padding {
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
