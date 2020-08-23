@@ -44,11 +44,21 @@ section {
   flex-direction: column;
 }
 
+/* Helpers */
+
+.btn.btn-long {
+  width: 100%;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
 /* Spacers */
 
 .sec-padding {
-  padding-top: 45px;
-  padding-bottom: 45px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .full-height {
@@ -58,8 +68,45 @@ section {
   flex: 1;
 }
 
+.sm-bottom-margin {
+  margin-bottom: 15px;
+}
+
 /* Branding */
 
 .bg-cont {
   background-color: rgba(255,255,255,0.8);
+}
+
+/* Navbar */
+
+.navbar-toggler {
+  font-size: 36px;
+  width: auto;
+  padding: 0;
+}
+
+.navbar-toggler-icon {
+  width: auto;
+  height: auto;
+}
+
+.navbar-nav .nav-item {
+  text-align: center;
+}
+
+.alert {
+  display: none;
+}
+
+.alert.active {
+  display: block;
+}
+
+/* Form */
+
+.img-small {
+  height: 300px;
+  display: block;
+  margin: 0 auto;
 }

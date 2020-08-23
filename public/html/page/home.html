@@ -1,11 +1,45 @@
 <section>
   <div class="container bg-cont full-height">
-    <div class="row">      
-      <div class="col-12 sec-padding">
-        <h2>
+    <div class="row sec-padding">      
+      <div class="col-md-12">
+        <h1>
         Search for your favorite hero here
-        </h2>
+        </h1>
+      </div>
+      
+      <div class="col-md-4 order-md-2">
+        <img src="{$MEDIA$}/img/superman.png" alt="Superman" class="img-fluid img-small" />
+      </div>
+      
+      <div class="col-md-8 order-md-1">
+        <form id="search-form" action="{$SITE_ROOT$}/search/name" method="get">
+          <div class="form-group">
+            <input type="hidden" name="token" value="{$CSRF$}" />
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-9 sm-bottom-margin">
+                <label for="search">
+                  Search character by name
+                </label>
+                <input id="search" name="search" class="form-control" type="text" value="" placeholder="eg... Superman" />
+              </div>
+              <div class="col-md-3 d-flex align-items-end sm-bottom-margin">
+                <button type="submit" name="s" class="btn btn-primary btn-long">
+                  <span>Search</span> <span><i class="fas fa-search"></i></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
         
+        <div id="error" class="mt-5 alert alert-danger {$ACTIVE$}">
+          {$ERRORS$}
+        </div>
+        
+        <div id="results">
+          {$RESULTS$}
+        </div>
       </div>
     </div>
   </div>

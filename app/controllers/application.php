@@ -8,10 +8,10 @@ class Application {
   }  
   
   # Remove slashes from a given string array
-  private function stripslashes_deep($value) {    
-    $value = is_array($value) ? array_map(array($this, "stripslashes_deep"), $value) : stripslashes($value);
+  private function stripslashes_deep($arr) {
+    $arr = is_array($arr) ? array_map(array($this, "stripslashes_deep"), $arr) : stripslashes($arr);
     
-    return $value;
+    return $arr;
   }
   
   # Remove slashes from input data from GET, POST and COOKIE
