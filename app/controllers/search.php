@@ -12,7 +12,7 @@ class Search extends Controller implements Handlers {
   }
   
   public function name ($name = null) {
-    
+    $this->api_call($name);
   }
     
   public function not_found() {

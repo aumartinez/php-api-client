@@ -11,7 +11,8 @@ class ApiModel implements Sanitize {
   }
   
   public function api_call($query) {
-    $query = $this->sanitized($query);
+    
+    $query = $this->sanitize_str($query);
     
     $url = "https://superheroapi.com/api/10222456123421825/search/" . $query;
     
@@ -45,7 +46,9 @@ class ApiModel implements Sanitize {
     $str = stripslashes($str);
     $str = htmlspecialchars($str);
     
-    return $str;
+    $this->sanitized = $str;
+    
+    return $this->sanitized;
   }
   
 }
