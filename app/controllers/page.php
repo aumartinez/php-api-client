@@ -1,6 +1,6 @@
 <?php
 
-class Page extends Controller {
+class Page extends Controller implements Locales {
     
   public function __construct($controller, $method) {
     parent::__construct($controller, $method);        
@@ -15,7 +15,8 @@ class Page extends Controller {
   }
   
   public function home() {
-    echo "landing";
+    $this->get_model("PageModel")->page_title = "SuperHero Home";
+    $this->build_page("home");
   }
   
   public function details($id = null) {
@@ -25,7 +26,7 @@ class Page extends Controller {
   # Not found handler
   public function not_found() {    
     # 404 page
-    $this->build_page("not-found");    
+    $this->build_page("not-found");
   }
   
   # Controller/Model/View link
