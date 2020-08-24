@@ -13,6 +13,20 @@ class ApiModel implements Sanitize {
     return $res;
   }
   
+  public function get_idcall($id) {
+    
+  }
+  
+  public function validate_form($token) {
+    $token = $this->sanitize_str($token);
+    
+    if (!hash_equals($token, $_SESSION["token"])) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }  
   
   public function sanitize_str($str) {
     $str = trim($str);

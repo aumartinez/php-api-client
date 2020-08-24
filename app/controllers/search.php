@@ -2,6 +2,8 @@
 
 class Search extends Controller implements Handlers {
   
+  protected $res;
+  
   public function __construct($controller, $method) {
     parent::__construct($controller, $method);        
         
@@ -11,13 +13,34 @@ class Search extends Controller implements Handlers {
     $this->load_model("ApiModel");    
   }
   
-  public function name ($name = null) {
-    $name = $_GET["search"];
+  public function name ($query = null) {
+    $query = isset($_GET["search"])?$_GET["search"]:"";
+    $token = isset($_GET["token"])?$_GET["token"]:"";
     
-    $token = $this->get_model("ApiModel")->sanitize_str($_GET["token"]);
+    $_SESSION["query"] = $query;
     
-    $res = $this->get_model("ApiModel")->api_call($name);
-    echo $res;
+    $is_valid = $this->get_model("ApiModel")->validate_form($token);
+    
+    if (!$is_valid) {
+      $_SESSION["error"][] = "Invalid request";
+      redirect("/");
+    }
+    
+    $this->res = $this->get_model("ApiModel")->api_call($query);
+    $this->res = json_decode($this->res);
+    
+    $_SESSION["results"] = $this->res;
+    
+    redirect("/");
+  }
+  
+  public function id($id = null) {
+    $id = isset($_GET["id"])?$_GET["id"]:"";
+    
+    if (empty(trim($id))) {
+      $this->not_found();
+    }
+    
   }
     
   public function not_found() {

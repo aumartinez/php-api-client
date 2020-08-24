@@ -1,47 +1,51 @@
 <?php
 
-class Page extends Controller implements Handlers, Errors {    
-    
+class Page extends Search implements Handlers, Errors {
+  
+  protected $output;
+  protected $results;
+  
   public function __construct($controller, $method) {
-    parent::__construct($controller, $method);        
-        
-    session_start();
+    parent::__construct($controller, $method);
             
     # Any models required to interact with this controller should be loaded here    
     $this->load_model("PageModel");
     
     # Instantiate custom view output
     $this->output = new PageView();
-    
+    $this->results = new ResultsView();    
   }
   
-  public function home() {
-    
+  public function home() {    
     # CSRF hash
     if (empty($_SESSION["token"]) || !isset($_SESSION["token"])) {
         $_SESSION["token"] = bin2hex(random_bytes(32));
     }
     
     $active = isset($_SESSION["error"])? "active":"";
+    $query = isset($_SESSION["query"])? $_SESSION["query"]:"";
+    $src = isset($_SESSION["results"])? $_SESSION["results"]:"";
     
     # Initial state
     $locales = array(
     "ERRORS" => $this->get_errors(),
     "ACTIVE" => $active,
     "CSRF" => $_SESSION["token"],
-    "RESULTS" => $this->get_results(),
+    "RESULTS" => $this->results->get_results($src),
+    "QUERY" => $query,
     );
     
     $this->output->add_localearray($locales);
     
     $this->get_model("PageModel")->page_title = "SuperHero Home";
-    $this->build_page("home");
+    $this->build_page("home");    
   }
   
-  public function details($id = null) {
-    echo "details page";
+  public function about() {
+    $this->get_model("PageModel")->page_title = "About";
+    $this->build_page("about");
   }
-  
+    
   public function get_errors() {    
     if (isset($_SESSION["error"]) && count($_SESSION["error"]) > 0){
       $err_mess = "\n";
@@ -57,9 +61,6 @@ class Page extends Controller implements Handlers, Errors {
     return;
   }
   
-  public function get_results() {
-    return;
-  }
     
   # Not found handler
   public function not_found() { 

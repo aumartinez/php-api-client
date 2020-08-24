@@ -33,7 +33,6 @@ class PageView extends View {
     
     return $this->locales;
   }
- 
   
   # Keyword list
   protected function build_locales() {
