@@ -34,7 +34,7 @@ class Search extends Controller implements Handlers {
     if ($this->res->response == "error") {
       $_SESSION["error"][] = ucfirst($this->res->error);
       
-      # If previous results were displayed, removed them
+      # If previous results were displayed, remove them
       if (isset($_SESSION["results"])) {
         unset($_SESSION["results"]);
       }
@@ -43,15 +43,6 @@ class Search extends Controller implements Handlers {
     
     $_SESSION["results"] = $this->res->results;      
     redirect("/");
-  }
-  
-  public function id($id = null) {
-    $id = isset($_GET["id"])?$_GET["id"]:"";
-    
-    if (empty(trim($id))) {
-      $this->not_found();
-    }
-    
   }
     
   public function not_found() {

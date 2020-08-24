@@ -1,7 +1,7 @@
 <section>
   <div class="container bg-cont full-height">
-    <div class="row sec-padding">
-      <div class="col-md-4 order-md-2">
+    <div class="row sec-padding internal-form">
+      <div class="col-md-4 order-md-2 hidden-xs">
         <img src="{$MEDIA$}/img/superman.png" alt="Superman" class="img-fluid img-small" />
       </div>
       
@@ -12,13 +12,13 @@
           </div>
           <div class="form-group">
             <div class="row">
-              <div class="col-md-9 sm-bottom-margin">
+              <div class="col-md-8 sm-bottom-margin">
                 <label for="search">
                   Search character by name <span class="loader"><i class="fas fa-sync-alt"></i></span>
                 </label>
                 <input id="search" name="search" class="form-control" type="text" value="{$QUERY$}" placeholder="eg... Superman" />
               </div>
-              <div class="col-md-3 d-flex align-items-end sm-bottom-margin">
+              <div class="col-md-4 d-flex align-items-end sm-bottom-margin">
                 <button id="submit-search" type="submit" name="s" class="btn btn-primary btn-long">
                   <span>Search</span> <span><i class="fas fa-search"></i></span>
                 </button>
@@ -26,6 +26,10 @@
             </div>
           </div>
         </form>
+      </div>
+      
+      <div class="col-12 order-md-3">
+        {$RESULTS$}
       </div>
     </div>
   </div>

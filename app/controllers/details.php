@@ -29,16 +29,33 @@ class Details extends Search implements Handlers {
     
     $query = isset($_SESSION["query"])? $_SESSION["query"]:"";
     
-    $res = $this->get_model("ApiModel")->get_thisid($id);
+    $src = $this->get_model("ApiModel")->get_idcall($id);
+    $src = json_decode($src);
+        
+    if (!$src) {
+      # 404 page
+      $this->build_page("not-found");
+      exit();
+    }
     
-    if (!$res) {
-      $this->not_found();
+    if (isset($src->error) && $src->error == "invalid id") {
+      # 404 page
+      $this->build_page("not-found");
+      exit();
+    }
+    
+    if ($src) {
+      $res = $this->results->get_pageid($src);      
+    }
+    else {
+      $res = "";
     }
 
     # Initial state
     $locales = array(
     "CSRF" => $_SESSION["token"],
     "QUERY" => $query,
+    "RESULTS" => $res,
     );
     
     $this->output->add_localearray($locales);
@@ -48,9 +65,7 @@ class Details extends Search implements Handlers {
     
   # Not found handler
   public function not_found() { 
-    
-    # 404 page
-    $this->build_page("not-found");
+  
   }
   
   # Controller/Model/View link

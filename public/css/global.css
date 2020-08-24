@@ -73,10 +73,14 @@ section {
   margin-bottom: 15px;
 }
 
+h1 {
+  margin-bottom: 1.2em;
+}
+
 /* Branding */
 
 .bg-cont {
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255,255,255,0.85);
 }
 
 .btn-primary {
@@ -130,6 +134,10 @@ a:hover {
   margin: 0 auto;
 }
 
+.internal-form .img-small {
+  height: 175px;
+}
+
 .loader {
   display: none;
 }
@@ -167,7 +175,27 @@ a:hover {
   flex: 1;
 }
 
-@media (min-width: 768px) {
+/* Details page */
+
+.hero-profile {
+  padding: 15px;
+}
+
+.hero-profile img {
+  margin-bottom: 15px;
+}
+
+@media (max-width: 767px) {
+  .hidden-xs {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) { 
+  .visible-xs {
+    display: none;
+  }
+   
   .hero-card {
     display: flex;
     flex-direction: row;    

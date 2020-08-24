@@ -3,8 +3,7 @@
 class ApiModel implements Sanitize {
     
   public function api_call($query) {
-    # Tried with cURL but API returned 302 message
-    
+    # Tried with cURL but API returned 302 message    
     $query = $this->sanitize_str($query);        
     $url = "https://superheroapi.com/api/10222456123421825/search/" . $query;
             
@@ -14,7 +13,12 @@ class ApiModel implements Sanitize {
   }
   
   public function get_idcall($id) {
+    $query = $this->sanitize_str($id);
+    $url = "https://superheroapi.com/api/10222456123421825/" . $query;
+            
+    $res = file_get_contents($url);
     
+    return $res;
   }
   
   public function validate_form($token) {
