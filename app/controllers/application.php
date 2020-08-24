@@ -6,19 +6,19 @@ class Application {
     $this->sanitize_data();
     $this->unregister_globals();
   }  
-  
-  # Remove slashes from a given string array
-  private function stripslashes_deep($arr) {
-    $arr = is_array($arr) ? array_map(array($this, "stripslashes_deep"), $arr) : stripslashes($arr);
-    
-    return $arr;
-  }
-  
+      
   # Remove slashes from input data from GET, POST and COOKIE
   private function sanitize_data() {
-    $_GET = $this->stripslashes_deep($_GET);
-    $_POST = $this->stripslashes_deep($_POST);
-    $_COOKIE = $this->stripslashes_deep($_COOKIE);
+    $_GET = isset($_GET)?$this->stripslashes_deep($_GET):"";
+    $_POST = isset($_POST)?$this->stripslashes_deep($_POST):"";
+    $_COOKIE = isset($_COOKIE)?$this->stripslashes_deep($_COOKIE):"";
+  }
+  
+  # Remove slashes from a given string array
+  private function stripslashes_deep($value) {
+    $value = is_array($value)?array_map(array($this, "stripslashes_deep"), $value) : stripslashes($value);
+    
+    return $value;
   }
   
   # If set, unregister any global constant

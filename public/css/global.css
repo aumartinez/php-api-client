@@ -103,6 +103,7 @@ a:hover {
   font-size: 36px;
   width: auto;
   padding: 0;
+  margin-bottom: auto;
 }
 
 .navbar-toggler-icon {
