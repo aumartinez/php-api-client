@@ -55,6 +55,12 @@ section {
   flex: 1;
 }
 
+input.form-control,
+.btn,
+.alert {
+  border-radius: 0;
+}
+
 /* Spacers */
 
 .sec-padding {
@@ -71,10 +77,6 @@ section {
 
 .sm-bottom-margin {
   margin-bottom: 15px;
-}
-
-h1 {
-  margin-bottom: 1.2em;
 }
 
 /* Branding */
@@ -119,12 +121,8 @@ a:hover {
   padding: 10px 20px;
 }
 
-.alert {
-  display: none;
-}
-
-.alert.active {
-  display: block;
+.navbar-brand img {
+  height: 50px;
 }
 
 /* Form */
@@ -137,6 +135,14 @@ a:hover {
 
 .internal-form .img-small {
   height: 175px;
+}
+
+.alert {
+  display: none;
+}
+
+.alert.active {
+  display: block;
 }
 
 .loader {
@@ -174,6 +180,11 @@ a:hover {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+}
+
+.hero-card .hero-name {
+  font-weight: bold;
+  font-size: 1.3em;
 }
 
 /* Details page */
@@ -214,6 +225,14 @@ a:hover {
 @media (min-width: 768px) { 
   .visible-xs {
     display: none;
+  }
+  
+  h1 {
+    margin-bottom: 1.2em;
+  }
+  
+  .navbar-brand img {
+    height: auto;
   }
    
   .hero-card {

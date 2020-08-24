@@ -45,14 +45,12 @@ class Page extends Search implements Handlers, Errors {
     $this->output->add_localearray($locales);
     
     $this->get_model("PageModel")->page_title = "SuperHero Home";
-    $this->build_page("home");
-    exit();
+    return $this->build_page("home");
   }
   
   public function about() {
     $this->get_model("PageModel")->page_title = "About";
     $this->build_page("about");
-    exit();
   }
     
   public function get_errors() {    
@@ -72,10 +70,10 @@ class Page extends Search implements Handlers, Errors {
   
     
   # Not found handler
-  public function not_found() {     
+  public function not_found():string {     
     # 404 page
     $this->get_model("PageModel")->page_title = "Not found";
-    $this->build_page("not-found");
+    return $this->build_page("not-found");
   }
   
   # Controller/Model/View link
@@ -83,7 +81,7 @@ class Page extends Search implements Handlers, Errors {
     $html_src = $this->get_model("PageModel")->get_page($page_name);    
     $html = $this->output->replace_localizations($html_src);
     
-    $this->get_view()->render($html);
+    return $this->get_view()->render($html);
   }
   
 }

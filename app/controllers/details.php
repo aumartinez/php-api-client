@@ -62,12 +62,13 @@ class Details extends Search implements Handlers {
     
     $this->output->add_localearray($locales);
     
-    $this->build_page("details");
+    return $this->build_page("details");
   }  
     
   # Not found handler
-  public function not_found() { 
-  
+  public function not_found():string { 
+    $str = "";    
+    return $str;
   }
   
   # Controller/Model/View link
@@ -75,7 +76,7 @@ class Details extends Search implements Handlers {
     $html_src = $this->get_model("PageModel")->get_page($page_name);    
     $html = $this->output->replace_localizations($html_src);
     
-    $this->get_view()->render($html);
+    return $this->get_view()->render($html);
   }
   
 }

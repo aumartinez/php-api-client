@@ -13,7 +13,7 @@ class Search extends Controller implements Handlers {
     $this->load_model("ApiModel");    
   }
   
-  public function name ($query = null) {
+  public function name (string $query = null):void {
     $query = isset($_GET["search"])?$_GET["search"]:"";
     $token = isset($_GET["token"])?$_GET["token"]:"";
     
@@ -31,7 +31,7 @@ class Search extends Controller implements Handlers {
     $this->res = json_decode($this->res);
     
     # If error is received from API
-    if ($this->res->response == "error") {
+    if (isset($this->res->response) && $this->res->response == "error") {
       $_SESSION["error"][] = ucfirst($this->res->error);
       
       # If previous results were displayed, remove them
@@ -45,7 +45,7 @@ class Search extends Controller implements Handlers {
     redirect("/");
   }
     
-  public function not_found() {
+  public function not_found():string {
     $_SESSION["error"][] = "Incorrect request";
     
     redirect("/");
