@@ -185,6 +185,25 @@ a:hover {
   margin-bottom: 15px;
 }
 
+/* About */
+
+.inner-page {
+  padding: 15px;
+  background-color: #fff;
+}
+
+.about-item {
+  font-size: 40px;
+}
+
+/* Not found */
+
+.not-found {
+  max-width: 600px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
 @media (max-width: 767px) {
   .hidden-xs {
     display: none;
@@ -214,6 +233,12 @@ a:hover {
   .hero-card img {
     max-width: 100%;
   }
+  
+  .inner-page {
+    padding: 30px;
+    background-color: #fff;
+  }
+
 }
 
 /* Animation */
