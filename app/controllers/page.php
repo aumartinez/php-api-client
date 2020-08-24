@@ -13,20 +13,10 @@ class Page extends Search implements Handlers, Errors {
     
     # Instantiate custom view output
     $this->output = new PageView();
-    $this->results = new ResultsView();
-    
-    $page = $this->method;
-    
-    if ($page == "home") {
-      $this->get_home();
-    }
+    $this->results = new ResultsView();    
   }
-  
-  public function home(){
     
-  }
-  
-  public function get_home() {    
+  public function home() {    
     # CSRF hash
     if (empty($_SESSION["token"]) || !isset($_SESSION["token"])) {
         $_SESSION["token"] = bin2hex(random_bytes(32));
@@ -55,12 +45,14 @@ class Page extends Search implements Handlers, Errors {
     $this->output->add_localearray($locales);
     
     $this->get_model("PageModel")->page_title = "SuperHero Home";
-    $this->build_page("home");    
+    $this->build_page("home");
+    exit();
   }
   
   public function about() {
     $this->get_model("PageModel")->page_title = "About";
     $this->build_page("about");
+    exit();
   }
     
   public function get_errors() {    
@@ -80,9 +72,9 @@ class Page extends Search implements Handlers, Errors {
   
     
   # Not found handler
-  public function not_found() { 
-    
+  public function not_found() {     
     # 404 page
+    $this->get_model("PageModel")->page_title = "Not found";
     $this->build_page("not-found");
   }
   

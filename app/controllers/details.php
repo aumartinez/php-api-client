@@ -34,12 +34,14 @@ class Details extends Search implements Handlers {
         
     if (!$src) {
       # 404 page
+      $this->get_model("PageModel")->page_title = "Not found";
       $this->build_page("not-found");
       exit();
     }
     
     if (isset($src->error) && $src->error == "invalid id") {
       # 404 page
+      $this->get_model("PageModel")->page_title = "Not found";
       $this->build_page("not-found");
       exit();
     }
