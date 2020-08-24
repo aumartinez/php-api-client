@@ -66,9 +66,8 @@ class Details extends Search implements Handlers {
   }  
     
   # Not found handler
-  public function not_found():string { 
-    $str = "";    
-    return $str;
+  public function not_found():void { 
+        
   }
   
   # Controller/Model/View link
