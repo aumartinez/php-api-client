@@ -70,10 +70,10 @@ class Page extends Search implements Handlers, Errors {
   
     
   # Not found handler
-  public function not_found():string {     
+  public function not_found():void {     
     # 404 page
     $this->get_model("PageModel")->page_title = "Not found";
-    return $this->build_page("not-found");
+    $this->build_page("not-found");
   }
   
   # Controller/Model/View link
