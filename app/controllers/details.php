@@ -60,9 +60,8 @@ class Details extends Search implements Handlers {
     "RESULTS" => $res,
     );
     
-    $this->output->add_localearray($locales);
-    
-    return $this->build_page("details");
+    $this->output->add_localearray($locales);    
+    $this->build_page("details");
   }  
     
   # Not found handler
@@ -75,7 +74,7 @@ class Details extends Search implements Handlers {
     $html_src = $this->get_model("PageModel")->get_page($page_name);    
     $html = $this->output->replace_localizations($html_src);
     
-    return $this->get_view()->render($html);
+    $this->get_view()->render($html);
   }
   
 }
