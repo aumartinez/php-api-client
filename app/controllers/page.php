@@ -66,8 +66,7 @@ class Page extends Search implements Handlers, Errors {
     }
     
     return;
-  }
-  
+  }  
     
   # Not found handler
   public function not_found():void {     
