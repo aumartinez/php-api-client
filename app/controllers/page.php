@@ -45,7 +45,7 @@ class Page extends Search implements Handlers, Errors {
     $this->output->add_localearray($locales);
     
     $this->get_model("PageModel")->page_title = "SuperHero Home";
-    return $this->build_page("home");
+    $this->build_page("home");
   }
   
   public function about() {
@@ -80,7 +80,7 @@ class Page extends Search implements Handlers, Errors {
     $html_src = $this->get_model("PageModel")->get_page($page_name);    
     $html = $this->output->replace_localizations($html_src);
     
-    return $this->get_view()->render($html);
+    $this->get_view()->render($html);
   }
   
 }
