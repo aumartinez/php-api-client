@@ -19,7 +19,7 @@ Tried to use cURL to call the API but it returned a 302 redirect message, opted 
 
 Mobile landing view
 
-![screenshot](https://github.com/aumartinez/php-api-client/blob/master/screenshot-3.png)
+![screenshot](https://github.com/aumartinez/php-api-client/blob/master/screenshot-4.png)
 
 Performance test
 
