@@ -82,7 +82,7 @@ input.form-control,
 /* Branding */
 
 .bg-cont {
-  background-color: rgba(255,255,255,0.85);
+  background-color: rgba(255,255,255,0.7);
 }
 
 .btn-primary {
@@ -189,6 +189,11 @@ a:hover {
   padding: 15px;
 }
 
+.hero-profile h2,
+.hero-profile h1 {
+  color: #C80000;
+}
+
 .hero-profile img {
   margin-bottom: 15px;
 }
@@ -212,9 +217,17 @@ a:hover {
   margin: 0 auto;
 }
 
+.not-found i {
+  color: #C80000;
+}
+
 @media (max-width: 767px) {
   .hidden-xs {
     display: none;
+  }
+  
+  .p-xs-0 {
+    padding: 0;
   }
 }
 
