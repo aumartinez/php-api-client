@@ -17,6 +17,7 @@ class Search extends Controller implements Handlers {
     $query = isset($_GET["search"])?$_GET["search"]:"";
     $token = isset($_GET["token"])?$_GET["token"]:"";
     
+    $query = $this->get_model("ApiModel")->sanitize_str($query);
     $_SESSION["query"] = $query;
     
     # CSRF validation
