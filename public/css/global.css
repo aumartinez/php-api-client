@@ -26,6 +26,7 @@ body {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 section {
@@ -78,6 +79,20 @@ section {
   background-color: rgba(255,255,255,0.8);
 }
 
+.btn-primary {
+  background-color: #2883BA !important;  
+}
+
+a:hover,
+a {
+  color: #C80000;
+}
+
+a.nav-link:hover,
+a:hover {
+  text-decoration: underline;
+}
+
 /* Navbar */
 
 .navbar-toggler {
@@ -95,6 +110,10 @@ section {
   text-align: center;
 }
 
+.navbar-expand-md .navbar-nav a.nav-link {
+  padding: 10px 20px;
+}
+
 .alert {
   display: none;
 }
@@ -109,4 +128,83 @@ section {
   height: 300px;
   display: block;
   margin: 0 auto;
+}
+
+.loader {
+  display: none;
+}
+
+.loader.active {
+  display: inline-block;
+}
+
+.loader i {
+  -webkit-animation: spin 1s linear infinite;
+  -moz-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+.hero-card {
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #2883BA;
+}
+
+.hero-card .hero-img {
+  max-width: 290px;
+}
+
+.hero-card img {
+  max-width: 100%;
+}
+
+.hero-card .hero-info {
+  padding: 15px;
+  background-color: #fff;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .hero-card {
+    display: flex;
+    flex-direction: row;    
+  }
+  
+  .hero-card .iterator {    
+    padding-top: 15px;
+    padding-right: 15px;
+    color: #fff;
+  }
+  
+  .hero-card .hero-img {
+    width: 200px;
+  }
+  
+  .hero-card img {
+    max-width: 100%;
+  }
+}
+
+/* Animation */
+
+@-moz-keyframes spin { 
+ 100% { 
+   -moz-transform: rotate(360deg); 
+ } 
+}
+
+@-webkit-keyframes spin { 
+  100% { 
+   -webkit-transform: rotate(360deg); 
+  } 
+}
+
+@keyframes spin { 
+  100% { 
+    -webkit-transform: rotate(360deg); 
+    transform:rotate(360deg); 
+  }
 }

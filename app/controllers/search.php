@@ -19,6 +19,7 @@ class Search extends Controller implements Handlers {
     
     $_SESSION["query"] = $query;
     
+    # CSRF validation
     $is_valid = $this->get_model("ApiModel")->validate_form($token);
     
     if (!$is_valid) {
@@ -29,8 +30,18 @@ class Search extends Controller implements Handlers {
     $this->res = $this->get_model("ApiModel")->api_call($query);
     $this->res = json_decode($this->res);
     
-    $_SESSION["results"] = $this->res;
+    # If error is received from API
+    if ($this->res->response == "error") {
+      $_SESSION["error"][] = ucfirst($this->res->error);
+      
+      # If previous results were displayed, removed them
+      if (isset($_SESSION["results"])) {
+        unset($_SESSION["results"]);
+      }
+      redirect("/");
+    }
     
+    $_SESSION["results"] = $this->res->results;      
     redirect("/");
   }
   

@@ -1,6 +1,6 @@
 <?php
 
-class Page extends Search implements Handlers, Errors {
+class Details extends Search implements Handlers {
   
   protected $output;
   protected $results;
@@ -10,74 +10,41 @@ class Page extends Search implements Handlers, Errors {
             
     # Any models required to interact with this controller should be loaded here    
     $this->load_model("PageModel");
+    $this->load_model("ApiModel");
     
     # Instantiate custom view output
     $this->output = new PageView();
     $this->results = new ResultsView();
     
-    $page = $this->method;
+    $id = $this->method;
     
-    if ($page == "home") {
-      $this->get_home();
-    }
+    $this->get_page_id($id);
   }
-  
-  public function home(){
     
-  }
-  
-  public function get_home() {    
+  public function get_page_id($id) {    
     # CSRF hash
     if (empty($_SESSION["token"]) || !isset($_SESSION["token"])) {
         $_SESSION["token"] = bin2hex(random_bytes(32));
     }
     
-    $active = (isset($_SESSION["error"]) && count($_SESSION["error"]) > 0)? "active":"";    
     $query = isset($_SESSION["query"])? $_SESSION["query"]:"";
-    $src = isset($_SESSION["results"])? $_SESSION["results"]:"";
     
-    if ($src) {
-      $res = $this->results->get_results($src);      
-    }
-    else {
-      $res = "";
-    }
+    $res = $this->get_model("ApiModel")->get_thisid($id);
     
+    if (!$res) {
+      $this->not_found();
+    }
+
     # Initial state
     $locales = array(
-    "ERRORS" => $this->get_errors(),
-    "ACTIVE" => $active,
     "CSRF" => $_SESSION["token"],
-    "RESULTS" => $res,
     "QUERY" => $query,
     );
     
     $this->output->add_localearray($locales);
     
-    $this->get_model("PageModel")->page_title = "SuperHero Home";
-    $this->build_page("home");    
-  }
-  
-  public function about() {
-    $this->get_model("PageModel")->page_title = "About";
-    $this->build_page("about");
-  }
-    
-  public function get_errors() {    
-    if (isset($_SESSION["error"]) && count($_SESSION["error"]) > 0){
-      $err_mess = "\n";
-      
-      foreach ($_SESSION["error"] as $error) {
-        $err_mess .= $error . "<br />\n";
-      }      
-      
-      unset($_SESSION["error"]);
-      return $err_mess;
-    }
-    
-    return;
-  }
-  
+    $this->build_page("details");
+  }  
     
   # Not found handler
   public function not_found() { 
