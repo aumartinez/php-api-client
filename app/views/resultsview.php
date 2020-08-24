@@ -93,13 +93,13 @@ class ResultsView extends PageView {
                     </h2>
                     
                     <p>
-                      <span>Full name:</span> <span>'. $src->biography->{'full-name'} .'</span><br />
-                      <span>Alter egos:</span> <span>'. $src->biography->{'alter-egos'} .'</span><br />
-                      <span>Aliases:</span> <span>'. implode(", ", $src->biography->aliases) .'</span><br />
-                      <span>Place of birth:</span> <span>'. $src->biography->{'place-of-birth'} .'</span><br />
-                      <span>First appearance:</span> <span>'. $src->biography->{'first-appearance'} .'</span><br />
-                      <span>Publisher:</span> <span>'. $src->biography->publisher .'</span><br />
-                      <span>Alignment:</span> <span>'. $src->biography->alignment .'</span><br />
+                      <span><strong>Full name:</strong></span> <span>'. $src->biography->{'full-name'} .'</span><br />
+                      <span><strong>Alter egos:</strong></span> <span>'. $src->biography->{'alter-egos'} .'</span><br />
+                      <span><strong>Aliases:</strong></span> <span>'. implode(", ", $src->biography->aliases) .'</span><br />
+                      <span><strong>Place of birth:</strong></span> <span>'. $src->biography->{'place-of-birth'} .'</span><br />
+                      <span><strong>First appearance:</strong></span> <span>'. $src->biography->{'first-appearance'} .'</span><br />
+                      <span><strong>Publisher:</strong></span> <span>'. $src->biography->publisher .'</span><br />
+                      <span><strong>Alignment:</strong></span> <span>'. $src->biography->alignment .'</span><br />
                     </p>
                     
                     <h2>
@@ -107,12 +107,12 @@ class ResultsView extends PageView {
                     </h2>
                     
                     <p>
-                      <span>Intelligence:</span> <span>'. $src->powerstats->intelligence .'</span><br />
-                      <span>Strength:</span> <span>'. $src->powerstats->strength .'</span><br />
-                      <span>Speed:</span> <span>'. $src->powerstats->speed .'</span><br />
-                      <span>Durability:</span> <span>'. $src->powerstats->durability .'</span><br />
-                      <span>Power:</span> <span>'. $src->powerstats->power .'</span><br />
-                      <span>Combat:</span> <span>'. $src->powerstats->combat .'</span><br />
+                      <span><strong>Intelligence:</strong></span> <span>'. $src->powerstats->intelligence .'</span><br />
+                      <span><strong>Strength:</strong></span> <span>'. $src->powerstats->strength .'</span><br />
+                      <span><strong>Speed:</strong></span> <span>'. $src->powerstats->speed .'</span><br />
+                      <span><strong>Durability:</strong></span> <span>'. $src->powerstats->durability .'</span><br />
+                      <span><strong>Power:</strong></span> <span>'. $src->powerstats->power .'</span><br />
+                      <span><strong>Combat:</strong></span> <span>'. $src->powerstats->combat .'</span><br />
                     </p>
                   </div>
                 </div>
