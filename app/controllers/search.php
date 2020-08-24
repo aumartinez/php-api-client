@@ -45,7 +45,7 @@ class Search extends Controller implements Handlers {
     redirect("/");
   }
     
-  public function not_found():string {
+  public function not_found():void {
     $_SESSION["error"][] = "Incorrect request";
     
     redirect("/");
