@@ -83,7 +83,7 @@ class ResultsView extends PageView {
                '. $src->name.'
               </h1>
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 pl-md-0 p-xs-0">
                   <img src="'. $img .'" class="img-fluid" />
                 </div>
                 <div class="col-md-8 hero-card bg-white">
