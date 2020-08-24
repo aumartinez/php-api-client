@@ -86,7 +86,7 @@ class ResultsView extends PageView {
                 <div class="col-md-4">
                   <img src="'. $img .'" class="img-fluid" />
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8 hero-card bg-white">
                   <div class="hero-bio">
                     <h2>
                       Biography
