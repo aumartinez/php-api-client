@@ -25,7 +25,7 @@ class Search extends Controller implements Handlers {
     
     if (!$is_valid) {
       $_SESSION["error"][] = "Invalid request";
-      redirect("/");
+      redirect("/#search-form");
     }
     
     $this->res = $this->get_model("ApiModel")->api_call($query);
@@ -39,17 +39,17 @@ class Search extends Controller implements Handlers {
       if (isset($_SESSION["results"])) {
         unset($_SESSION["results"]);
       }
-      redirect("/");
+      redirect("/#search-form");
     }
     
     $_SESSION["results"] = $this->res->results;      
-    redirect("/");
+    redirect("/#search-form");
   }
     
   public function not_found():void {
     $_SESSION["error"][] = "Incorrect request";
     
-    redirect("/");
+    redirect("/#search-form");
   }
   
 }
