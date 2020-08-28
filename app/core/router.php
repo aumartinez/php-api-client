@@ -75,14 +75,13 @@ class Router {
     $controller = ucfirst($controller);
     $dispatch = new $controller($controller_name, $method);
         
-    if (method_exists($controller, $method)) {
+    if (method_exists($controller, $method) || !is_callable(array($controller, $method))) {
       call_user_func_array(array($dispatch, $method), $this->params);
     }
     else {
       # Error handler not found method
       call_user_func_array(array($dispatch, NOT_FOUND), $this->params);
-    }
-    
+    }    
   }  
 }
 
