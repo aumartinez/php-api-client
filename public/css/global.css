@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100%;
+}
+
 body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 18px;
@@ -16,7 +20,7 @@ body {
   background-size: cover;
   background-position: top center;
   background-attachment: fixed;
-  min-height: 100vh;
+  min-height: 100vh;  
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -30,10 +34,10 @@ body {
 }
 
 section {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  -webkit-box-flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -69,10 +73,10 @@ input.form-control,
 }
 
 .full-height {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  -webkit-box-flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 .sm-bottom-margin {

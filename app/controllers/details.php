@@ -46,6 +46,12 @@ class Details extends Search implements Handlers {
       exit();
     }
     
+    if (isset($src->response) && $src->response == "error") {
+      # 404 page
+      $_SESSION["error"][] = $src->error;
+      redirect("/");
+    }
+    
     if ($src) {
       $res = $this->results->get_pageid($src);      
     }

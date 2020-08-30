@@ -6,8 +6,18 @@ class ApiModel implements Sanitize {
     # Tried with cURL but API returned 302 message    
     $query = $this->sanitize_str($query);        
     $url = "https://superheroapi.com/api/10222456123421825/search/" . $query;
-            
-    $res = file_get_contents($url);
+           
+    if (!file_get_contents($url)) {
+      $err = array(
+      "response" => "error",
+      "error" => "Couldn't connect to API",
+      );
+                  
+      $res = json_encode($err);
+    }
+    else {
+      $res = file_get_contents($url);
+    }
     
     return $res;
   }
@@ -16,7 +26,17 @@ class ApiModel implements Sanitize {
     $query = $this->sanitize_str($id);
     $url = "https://superheroapi.com/api/10222456123421825/" . $query;
             
-    $res = file_get_contents($url);
+    if (!file_get_contents($url)) {
+      $err = array(
+      "response" => "error",
+      "error" => "Couldn't connect to API",
+      );
+                  
+      $res = json_encode($err);
+    }
+    else {
+      $res = file_get_contents($url);
+    }
     
     return $res;
   }
@@ -28,6 +48,7 @@ class ApiModel implements Sanitize {
       return false;
     }
     else {
+      unset($_SESSION["token"]);
       return true;
     }
   }  
