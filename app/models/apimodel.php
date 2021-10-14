@@ -5,7 +5,7 @@ class ApiModel implements Sanitize {
   public function api_call($query) {
     # Tried with cURL but API returned 302 message    
     $query = $this->sanitize_str($query);        
-    $url = "https://superheroapi.com/api/10222456123421825/search/" . $query;
+    $url = "https://superheroapi.com/api/1180364012471833/search/" . $query;
            
     if (!file_get_contents($url)) {
       $err = array(
